@@ -1,10 +1,10 @@
-#pragma once
-#include <string>
+	#pragma once
+#include "String.h"
+
 class Image
 {
-public:
-private:
-	std::string name;
+protected:
+	String name;
 	unsigned width;
 	unsigned height;
 };

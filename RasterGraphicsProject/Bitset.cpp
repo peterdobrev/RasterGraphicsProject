@@ -23,6 +23,7 @@ void Bitset::copyFrom(const Bitset& other)
 }
 
 Bitset::Bitset(const Bitset& other)
+{
 	copyFrom(other);
 }
 Bitset& Bitset::operator=(const Bitset& other)
