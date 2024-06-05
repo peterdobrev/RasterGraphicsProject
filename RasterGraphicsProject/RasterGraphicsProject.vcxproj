@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="AddCommand.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Bitset.cpp" />
     <ClCompile Include="CollageCommand.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Greyscale.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="AddCommand.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Bitset.h" />
     <ClInclude Include="CollageCommand.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Greyscale.h" />

@@ -13,22 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Commands">
-      <UniqueIdentifier>{70585353-fc33-4085-8f86-507eb478927b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Images">
-      <UniqueIdentifier>{327c739c-38c5-4da7-acf1-f32e23fc3da0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transformations">
+    <Filter Include="Source Files\Transformations">
       <UniqueIdentifier>{1b4f9f3f-ee66-4640-b819-666787bd6883}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Application">
-      <UniqueIdentifier>{2600f729-250a-4989-9d9f-a0092b9f2c1f}</UniqueIdentifier>
+    <Filter Include="Source Files\Images">
+      <UniqueIdentifier>{327c739c-38c5-4da7-acf1-f32e23fc3da0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Factories">
+    <Filter Include="Source Files\Factories">
       <UniqueIdentifier>{810a0316-13e9-4d39-8f6d-60fb6f105ecd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Session">
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{70585353-fc33-4085-8f86-507eb478927b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Application">
+      <UniqueIdentifier>{2600f729-250a-4989-9d9f-a0092b9f2c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Session">
       <UniqueIdentifier>{82087aa4-356b-44ec-a570-dcbcb65e1e5b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -37,144 +37,150 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UndoCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="TransformCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SwitchCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SessionInfoCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SaveCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SaveAsCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="LoadCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="CollageCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="AddCommand.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="Command.cpp">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PBMImage.cpp">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PGMImage.cpp">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PPMImage.cpp">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="Greyscale.cpp">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="Monochrome.cpp">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="Negative.cpp">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="Rotate.cpp">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="Transformation.cpp">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Application</Filter>
+      <Filter>Source Files\Application</Filter>
     </ClCompile>
     <ClCompile Include="ImageFactory.cpp">
-      <Filter>Factories</Filter>
+      <Filter>Source Files\Factories</Filter>
     </ClCompile>
     <ClCompile Include="TransformationFactory.cpp">
-      <Filter>Factories</Filter>
+      <Filter>Source Files\Factories</Filter>
     </ClCompile>
     <ClCompile Include="Session.cpp">
-      <Filter>Session</Filter>
+      <Filter>Source Files\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitset.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UndoCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="TransformCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SwitchCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SessionInfoCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SaveCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SaveAsCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="LoadCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="CollageCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="AddCommand.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
-      <Filter>Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="PBMImage.h">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="PGMImage.h">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="PPMImage.h">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
-      <Filter>Images</Filter>
+      <Filter>Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="Transformation.h">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Monochrome.h">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Negative.h">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Rotate.h">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Greyscale.h">
-      <Filter>Transformations</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Application.h">
-      <Filter>Application</Filter>
+      <Filter>Source Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="ImageFactory.h">
-      <Filter>Factories</Filter>
+      <Filter>Source Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="TransformationFactory.h">
-      <Filter>Factories</Filter>
+      <Filter>Source Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
-      <Filter>Session</Filter>
+      <Filter>Source Files\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitset.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
