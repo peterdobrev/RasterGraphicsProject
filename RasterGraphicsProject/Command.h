@@ -1,6 +1,7 @@
 #pragma once
 class Command
 {
-	void execute();
+	virtual void execute() const = 0;
+	~Command() = default;
 };
 
