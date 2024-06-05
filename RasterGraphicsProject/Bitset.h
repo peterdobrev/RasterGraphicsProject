@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-class Bitset
+class BitSet
 {
 	uint8_t* buckets = nullptr;
 	unsigned bucketsCount = 0;
@@ -9,21 +9,22 @@ class Bitset
 	const unsigned elementsInBucket = sizeof(uint8_t) * 8;
 
 	void free();
-	void copyFrom(const Bitset& other);
+	void copyFrom(const BitSet& other);
 
 	unsigned getBucketIndex(unsigned num) const;
 public:
-	Bitset(unsigned n);
+	BitSet(unsigned n);
 
-	Bitset(const Bitset& other);
-	Bitset& operator=(const Bitset& other);
-	~Bitset();
+	BitSet(const BitSet& other);
+	BitSet& operator=(const BitSet& other);
+	~BitSet();
 
-	void add(unsigned num);
-	void remove(unsigned num);
-	bool contains(unsigned num) const;
+	void turnOnBit(unsigned num);
+	void turnOffBit(unsigned num);
+	bool getBit(unsigned num) const;
+	unsigned getN() const;
 	void print() const;
-	friend Bitset UnionOfSets(const Bitset& lhs, const Bitset& rhs);
-	friend Bitset IntersectionOfSets(const Bitset& lhs, const Bitset& rhs);
+	friend BitSet UnionOfSets(const BitSet& lhs, const BitSet& rhs);
+	friend BitSet IntersectionOfSets(const BitSet& lhs, const BitSet& rhs);
 
 };

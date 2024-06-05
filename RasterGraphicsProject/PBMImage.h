@@ -1,17 +1,20 @@
 #pragma once
 #include "Image.h"
 #include "Bitset.h"
-#include "TransformableImage.h"
-class PBMImage : public Image, TransformableImage
+#include "TransformableObject.h"
+class PBMImage : public Image, TransformableObject
 {
-
 	// Interface of TransformableImage
 	void makeNegative() override;
 	void makeMonochrome() override;
 	void makeGreyscale() override;
-	void rotateLeft() override;
-	void rotateRight() override;
+	// rotateLeft are inherited
+	// rotateRight are inherited
+
+protected:
+	void applyRotation() override;
+
 private:
-	Bitset data;
+	BitSet data;
 };
 

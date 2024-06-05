@@ -1,21 +1,21 @@
 #pragma once
 #include "Image.h"
-#include "TransformableImage.h"
+#include "TransformableObject.h"
 #include "Vector.hpp"
-class PPMImage : public Image, TransformableImage
+#include "Pixel.h"
+
+class PPMImage : public Image, TransformableObject
 {
 public:
 	// Interface of TransformableImage
 	void makeNegative() override;
 	void makeMonochrome() override;
 	void makeGreyscale() override;
-	void rotateLeft() override;
-	void rotateRight() override;
+	// rotateLeft are inherited
+	// rotateRight are inherited
+
 protected:
-	struct Pixel
-	{
-		int8_t R, G, B;
-	};
+	void applyRotation() override;
 private:
 	Vector<Pixel> data;
 };
