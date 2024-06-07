@@ -3,8 +3,9 @@
 #include "String.h"
 class AddCommand : public Command
 {
-	void execute() const override;
-
+public:
+	void execute(Session& session) const override;
+	AddCommand(String fileName);
 private:
 	String fileName;
 };

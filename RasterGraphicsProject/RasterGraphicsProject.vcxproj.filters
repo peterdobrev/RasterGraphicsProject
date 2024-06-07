@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Transformations">
-      <UniqueIdentifier>{1b4f9f3f-ee66-4640-b819-666787bd6883}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Images">
       <UniqueIdentifier>{327c739c-38c5-4da7-acf1-f32e23fc3da0}</UniqueIdentifier>
     </Filter>
@@ -36,9 +33,6 @@
     <ClCompile Include="RasterGraphicsProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UndoCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
-    </ClCompile>
     <ClCompile Include="TransformCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
@@ -54,16 +48,10 @@
     <ClCompile Include="SaveAsCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="LoadCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
-    </ClCompile>
     <ClCompile Include="CollageCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="AddCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
-    </ClCompile>
-    <ClCompile Include="Command.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
@@ -78,28 +66,10 @@
     <ClCompile Include="PPMImage.cpp">
       <Filter>Source Files\Images</Filter>
     </ClCompile>
-    <ClCompile Include="Greyscale.cpp">
-      <Filter>Source Files\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Monochrome.cpp">
-      <Filter>Source Files\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Negative.cpp">
-      <Filter>Source Files\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Rotate.cpp">
-      <Filter>Source Files\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Transformation.cpp">
-      <Filter>Source Files\Transformations</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files\Application</Filter>
     </ClCompile>
     <ClCompile Include="ImageFactory.cpp">
-      <Filter>Source Files\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformationFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
     <ClCompile Include="Session.cpp">
@@ -108,14 +78,26 @@
     <ClCompile Include="Bitset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorModifiableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UndoCommand.h">
-      <Filter>Source Files\Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformCommand.h">
-      <Filter>Source Files\Commands</Filter>
-    </ClInclude>
     <ClInclude Include="SwitchCommand.h">
       <Filter>Source Files\Commands</Filter>
     </ClInclude>
@@ -126,9 +108,6 @@
       <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SaveAsCommand.h">
-      <Filter>Source Files\Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadCommand.h">
       <Filter>Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="CollageCommand.h">
@@ -152,34 +131,40 @@
     <ClInclude Include="Image.h">
       <Filter>Source Files\Images</Filter>
     </ClInclude>
-    <ClInclude Include="Transformation.h">
-      <Filter>Source Files\Transformations</Filter>
-    </ClInclude>
-    <ClInclude Include="Monochrome.h">
-      <Filter>Source Files\Transformations</Filter>
-    </ClInclude>
-    <ClInclude Include="Negative.h">
-      <Filter>Source Files\Transformations</Filter>
-    </ClInclude>
-    <ClInclude Include="Rotate.h">
-      <Filter>Source Files\Transformations</Filter>
-    </ClInclude>
-    <ClInclude Include="Greyscale.h">
-      <Filter>Source Files\Transformations</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Source Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="ImageFactory.h">
       <Filter>Source Files\Factories</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationFactory.h">
-      <Filter>Source Files\Factories</Filter>
-    </ClInclude>
     <ClInclude Include="Session.h">
       <Filter>Source Files\Session</Filter>
     </ClInclude>
     <ClInclude Include="Bitset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformableObject.h">
+      <Filter>Source Files\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorModifiableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PolymorphicPtr.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
