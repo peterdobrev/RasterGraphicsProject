@@ -14,6 +14,7 @@ class BitSet
 	unsigned getBucketIndex(unsigned num) const;
 public:
 	BitSet(unsigned n);
+	BitSet() : BitSet(0) {}
 
 	BitSet(const BitSet& other);
 	BitSet& operator=(const BitSet& other);

@@ -4,13 +4,17 @@
 
 class Pixel : public ColorModifiableObject
 {
-	uint8_t R, G, B;
-
 public:
+	Pixel();
+	Pixel(uint8_t R, uint8_t G, uint8_t B);
 	// Inherited via ColorModifiableObject
 	void makeGreyscale() override;
 	void makeMonochrome() override;
 	void makeNegative() override;
+	virtual ColorModifiableObject* clone() const override;
+private:
+	uint8_t R, G, B;
 
+	// Inherited via ColorModifiableObject
 };
 

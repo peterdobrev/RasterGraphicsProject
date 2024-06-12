@@ -76,15 +76,17 @@ PolymorphicPtr<Command> CommandFactory::createAddCommand()
 {
     String fileName;
     std::cin >> fileName;
-    AddCommand* command = new AddCommand(fileName);
+    AddCommand* addCommand = new AddCommand(fileName);
+    PolymorphicPtr<Command> command(addCommand);
+    return command;
 }
 
 PolymorphicPtr<Command> CommandFactory::createCollageCommand()
 {
-    String imageName1, imageName2, directionString;
+    String imageName1, imageName2, outImageName, directionString;
     CollageCommand::Direction direction;
 
-    std::cin >> directionString >> imageName1 >> imageName2;
+    std::cin >> directionString >> imageName1 >> imageName2 >> outImageName;
 
     if (directionString == "horizontal")
     {
@@ -95,7 +97,7 @@ PolymorphicPtr<Command> CommandFactory::createCollageCommand()
         direction = CollageCommand::Direction::vertical;
     }
 
-    CollageCommand* command = new CollageCommand(direction, imageName1, imageName2);
+    CollageCommand* command = new CollageCommand(direction, imageName1, imageName2, outImageName);
 
     return PolymorphicPtr<Command>(command);
 }

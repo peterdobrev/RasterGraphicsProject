@@ -2,10 +2,16 @@
 #include "Application.h"
 #include "String.h"
 #include "CommandFactory.h"
+#include <sstream>
+#include "TransformableImageFactory.h"
 
 void Application::printSession() const
 {
     activeSession->print();
+}
+
+void Application::handleSwitchSession()
+{
 }
 
 void Application::addCommand(PolymorphicPtr<Command>& command)
@@ -16,6 +22,10 @@ void Application::addCommand(PolymorphicPtr<Command>& command)
 void Application::popBackCommand()
 {
     activeSession->commands.popBack();
+}
+
+void Application::switchSession(Session* other)
+{
 }
 
 PolymorphicPtr<Command> Application::parseCommand()
@@ -45,6 +55,15 @@ PolymorphicPtr<Command> Application::parseCommand()
     return command;
 }
 
+void Application::run()
+{
+    Vector<PolymorphicPtr<TransformableImage>> images = getLoadImages();
+    Vector<PolymorphicPtr<Command>> commands;
+    Session* session = new Session(images, commands);
+    activeSession = session;
+    session = nullptr;
+}
+
 void Application::readCommand()
 {
     PolymorphicPtr<Command> command = parseCommand();
@@ -57,4 +76,20 @@ void Application::readCommand()
 const Session& Application::getSession() const
 {
     return *activeSession;
+}
+
+Vector<PolymorphicPtr<TransformableImage>> Application::getLoadImages() const
+{
+    char buffer[1024];
+    while (true)
+    {
+        std::cin.getline(buffer, sizeof(buffer), '\n');
+        std::stringstream ss(buffer);
+        String loadCommand;
+        ss >> loadCommand;
+        if (loadCommand == "load")
+        {
+            return TransformableImageFactory::createImagesFromStringstream(ss);
+        }
+    }
 }

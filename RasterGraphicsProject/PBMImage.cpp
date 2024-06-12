@@ -1,19 +1,23 @@
 #include "PBMImage.h"
 
-void PBMImage::makeNegative()
+
+void PBMImage::applyNegative()
 {
-	for (size_t i = 0; i < width * height; i++)
+	if (isNegative)
 	{
-		data.getBit(i) ? data.turnOffBit(i) : data.turnOnBit(i);
+		for (size_t i = 0; i < width * height; i++)
+		{
+			data.getBit(i) ? data.turnOffBit(i) : data.turnOnBit(i);
+		}
 	}
 }
 
-void PBMImage::makeMonochrome()
+void PBMImage::applyMonochrome()
 {
 	// No changes to the image
 }
 
-void PBMImage::makeGreyscale()
+void PBMImage::applyGreyscale()
 {
 	// No changes to the image
 }
@@ -33,6 +37,23 @@ void PBMImage::applyRotation()
 	default:
 		break;
 	}
+}
+
+TransformableImage* PBMImage::clone() const
+{
+	return new PBMImage(*this);
+}
+
+void PBMImage::loadData()
+{
+}
+
+void PBMImage::saveData()
+{
+}
+
+void PBMImage::clearData()
+{
 }
 
 

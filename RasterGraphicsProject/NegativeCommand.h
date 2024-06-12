@@ -1,9 +1,11 @@
 #pragma once
-#include "Command.h"
-class NegativeCommand : public Command
+#include "UndoCommand.h"
+class NegativeCommand : public UndoCommand
 {
 public:
-    NegativeCommand();
-    void execute(Session& session) const override;
+    NegativeCommand(Session* sessionPtr);
+    void execute() const override;
+    virtual Command* clone() const override;
+    // undo remains as the default
 };
 

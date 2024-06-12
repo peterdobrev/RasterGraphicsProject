@@ -1,9 +1,12 @@
 #pragma once
 class RotatableObject
 {
+public:
 	virtual void rotateLeft();
 	virtual void rotateRight();
-
+	virtual void applyRotation() = 0;
+	virtual RotatableObject* clone() const = 0;
+	virtual ~RotatableObject() = default;
 protected:
 	enum Direction {
 		top,
@@ -14,6 +17,5 @@ protected:
 
 	Direction direction = Direction::top;
 
-	virtual void applyRotation() = 0;
 };
 

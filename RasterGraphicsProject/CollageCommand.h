@@ -11,11 +11,13 @@ public:
 		vertical
 	};
 
-	void execute(Session& session) const override;
-	CollageCommand(Direction direction, String image1, String image2);
+	void execute() const override;
+	CollageCommand(Session* sessionPtr, Direction direction, String imagePath1, String imagePath2, String outImagePath);
+	virtual Command* clone() const override;
 private:
-	String image1;
-	String image2;
+	String imagePath1;
+	String imagePath2;
+	String outImagePath;
 	Direction direction;
 };
 

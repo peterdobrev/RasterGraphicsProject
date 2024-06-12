@@ -1,6 +1,6 @@
 #pragma once
-#include "Command.h"
-class RotateCommand : public Command
+#include "UndoCommand.h"
+class RotateCommand : public UndoCommand
 {
 public:
 	enum class Direction
@@ -9,8 +9,10 @@ public:
 		right
 	};
 
-	RotateCommand(Direction direction);
-	void execute(Session& session) const override;
+	RotateCommand(Session* sessionPtr, Direction direction);
+	void execute() const override;
+	virtual Command* clone() const override;
+	void undo() const override;
 protected:
 private:
 	Direction direction;

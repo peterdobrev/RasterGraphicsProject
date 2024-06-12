@@ -1,6 +1,9 @@
 #pragma once
-#include "ColorModifiableObject.h"
+#include "FastColorModifiableObject.h"
 #include "RotatableObject.h"
 
-class TransformableObject : public ColorModifiableObject, public RotatableObject
-{};
+class TransformableObject : public FastColorModifiableObject, public RotatableObject
+{
+	virtual void confirmChanges();
+	TransformableObject* clone() const override = 0;
+};

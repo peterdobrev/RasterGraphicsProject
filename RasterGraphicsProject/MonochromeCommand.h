@@ -1,9 +1,11 @@
 #pragma once
-#include "Command.h"
-class MonochromeCommand : public Command
+#include "UndoCommand.h"
+class MonochromeCommand : public UndoCommand
 {
 public:
-	MonochromeCommand();
-	void execute(Session& session) const override;
+	MonochromeCommand(Session* sessionPtr);
+	void execute() const override;
+	virtual Command* clone() const override;
+	void undo() const override;
 };
 
