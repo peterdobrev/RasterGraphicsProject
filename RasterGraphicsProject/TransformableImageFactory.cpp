@@ -62,35 +62,3 @@ PolymorphicPtr<TransformableImage> TransformableImageFactory::createImageFromFil
         throw std::runtime_error("Unsupported file format!");
     }
 }
-
-PolymorphicPtr<TransformableImage> TransformableImageFactory::createPPMFromASCIIFile(std::ifstream& file, String fileName)
-{
-	unsigned width, height, maxValue;
-	file >> height >> width >> maxValue;
-
-	Vector<Pixel> data(width * height);
-	for (size_t i = 0; i < width*height; i++)
-	{
-		unsigned R, G, B;
-		file >> R >> G >> B;
-		if (R > maxValue || G > maxValue || B > maxValue)
-		{
-			throw std::invalid_argument("Value is bigger than allowed!");
-		}
-
-		Pixel pixel(R, G, B);
-		data.pushBack(pixel);
-	}
-
-	PPMImage* ppm = new PPMImage(data, fileName, width, height);
-	PolymorphicPtr<TransformableImage> image(ppm);
-	return image;
-}
-
-PolymorphicPtr<TransformableImage> TransformableImageFactory::createPPMFromBinaryFile(std::ifstream& file, String fileName)
-{
-	throw "not implemented";
-	// logic for creating from binary file
-}
-
-

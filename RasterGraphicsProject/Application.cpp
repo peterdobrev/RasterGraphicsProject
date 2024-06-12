@@ -49,7 +49,7 @@ PolymorphicPtr<Command> Application::parseCommand()
     }
     else
     {
-        command = CommandFactory::createCommand(commandType);
+        command = CommandFactory::createCommand(commandType, activeSession);
     }
 
     return command;

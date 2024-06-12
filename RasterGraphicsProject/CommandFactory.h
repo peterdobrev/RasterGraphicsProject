@@ -6,14 +6,14 @@
 class CommandFactory
 {
 public:
-	static PolymorphicPtr<Command> createCommand(String commandType);
+	static PolymorphicPtr<Command> createCommand(String commandType, Session* sessionPtr);
 private:
-	static PolymorphicPtr<Command> createMonochromeCommand();
-	static PolymorphicPtr<Command> createGreyscaleCommand();
-	static PolymorphicPtr<Command> createNegativeCommand();
-	static PolymorphicPtr<Command> createRotateCommand();
-	static PolymorphicPtr<Command> createAddCommand();
-	static PolymorphicPtr<Command> createCollageCommand();
+	static PolymorphicPtr<Command> createMonochromeCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createGreyscaleCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createNegativeCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createRotateCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createAddCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createCollageCommand(Session* sessionPtr);
 
 };
 

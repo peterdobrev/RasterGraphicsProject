@@ -12,7 +12,7 @@ public:
 	virtual ~Image() = default;
 protected:
 	String name;
-	unsigned width;
-	unsigned height;
+	unsigned width = 0;
+	unsigned height = 0;
 };
 

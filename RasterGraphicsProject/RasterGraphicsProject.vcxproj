@@ -132,9 +132,11 @@
     <ClCompile Include="Bitset.cpp" />
     <ClCompile Include="CollageCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
+    <ClCompile Include="FastColorModifiableObject.cpp" />
     <ClCompile Include="GreyscaleCommand.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="TransformableImage.cpp" />
+    <ClCompile Include="ImageDataLoader.cpp" />
+    <ClCompile Include="LoadableObject.cpp" />
     <ClCompile Include="TransformableImageFactory.cpp" />
     <ClCompile Include="MonochromeCommand.cpp" />
     <ClCompile Include="NegativeCommand.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="RotateCommand.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="TransformableObject.cpp" />
+    <ClCompile Include="UndoCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddCommand.h" />
@@ -159,6 +163,8 @@
     <ClInclude Include="FastColorModifiableObject.h" />
     <ClInclude Include="GreyscaleCommand.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageDataLoader.h" />
+    <ClInclude Include="LoadableObject.h" />
     <ClInclude Include="TransformableImageFactory.h" />
     <ClInclude Include="MonochromeCommand.h" />
     <ClInclude Include="NegativeCommand.h" />
@@ -173,6 +179,7 @@
     <ClInclude Include="String.h" />
     <ClInclude Include="TransformableImage.h" />
     <ClInclude Include="TransformableObject.h" />
+    <ClInclude Include="UndoCommand.h" />
     <ClInclude Include="Vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

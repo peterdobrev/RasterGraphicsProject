@@ -7,7 +7,7 @@ void Session::execute()
 	size_t length = commands.getSize();
 	for (size_t i = 0; i < length; i++)
 	{
-		commands[i].get()->execute(*this);
+		commands[i].get()->execute();
 	}
 }
 
