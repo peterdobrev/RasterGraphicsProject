@@ -1,13 +1,13 @@
 #pragma once
-#include "UndoCommand.h"
 #include "String.h"
-class AddCommand : public UndoCommand
+#include "Command.h"
+class AddCommand : public Command
 {
 public:
 	void execute() const override;
+	void print() const override;
 	AddCommand(Session* sessionPtr, String fileName);
 	virtual Command* clone() const override;
-	void undo() const override;
 private:
 	String fileName;
 };

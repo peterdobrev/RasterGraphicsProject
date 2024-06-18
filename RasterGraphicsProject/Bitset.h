@@ -23,6 +23,7 @@ public:
 	void turnOnBit(unsigned num);
 	void turnOffBit(unsigned num);
 	bool getBit(unsigned num) const;
+	bool operator[](unsigned num) const;
 	unsigned getN() const;
 	void print() const;
 	friend BitSet UnionOfSets(const BitSet& lhs, const BitSet& rhs);

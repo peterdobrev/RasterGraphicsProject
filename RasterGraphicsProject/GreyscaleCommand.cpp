@@ -1,27 +1,35 @@
 #include "GreyscaleCommand.h"
 
-GreyscaleCommand::GreyscaleCommand(Session* sessionPtr) : UndoCommand(sessionPtr) {}
+GreyscaleCommand::GreyscaleCommand(Session* sessionPtr) : Transformation(sessionPtr) {}
 
 void GreyscaleCommand::execute() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		sessionPtr->images[i].get()->makeGreyscale();
+		sessionPtr->getImageAtIndex(i).get()->makeGreyscale();
 	}
 }
 
-Command* GreyscaleCommand::clone() const
+void GreyscaleCommand::print() const
+{
+	std::cout << "Greyscale";
+}
+
+Transformation* GreyscaleCommand::clone() const
 {
 	return new GreyscaleCommand(*this);
 }
 
+
 void GreyscaleCommand::undo() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		sessionPtr->images[i].get()->undoGreyscale();
+		sessionPtr->getImageAtIndex(i).get()->undoGreyscale();
 	}
+
+	sessionPtr->popBackTransformation();
 }
 

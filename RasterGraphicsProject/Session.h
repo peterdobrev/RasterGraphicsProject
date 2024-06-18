@@ -3,29 +3,44 @@
 #include "Vector.hpp"
 #include "TransformableImage.h"
 
-class Command;
+class Transformation;
 
 class Session
 {
-	friend class Application;
-
-	// Malko e izguzica mai
-	friend class GreyscaleCommand;
-	friend class NegativeCommand;
-	friend class MonochromeCommand;
-	friend class RotateCommand;
-	friend class CollageCommand;
-	friend class AddCommand;
-
 public:
+	int getId() const;
+
 	void execute();
 	void print() const;
 
-private:
-	size_t id = 0;
-	Vector<PolymorphicPtr<TransformableImage>> images;
-	Vector<PolymorphicPtr<Command>> commands;
+	void popBackImage();
+	void popBackTransformation();
 
-	Session(Vector<PolymorphicPtr<TransformableImage>> images, Vector<PolymorphicPtr<Command>> commands);
+	void addImage(const PolymorphicPtr<TransformableImage>& image);
+	void addTransformation(const PolymorphicPtr<Transformation>& transformation);
+
+	void addImage(PolymorphicPtr<TransformableImage>&& image);
+	void addTransformation(PolymorphicPtr<Transformation>&& transformation);
+
+	PolymorphicPtr<TransformableImage>& getImageAtIndex(size_t index);
+	const PolymorphicPtr<TransformableImage>& getImageAtIndex(size_t index) const;
+
+	PolymorphicPtr<Transformation>& getTransformationAtIndex(size_t index);
+	const PolymorphicPtr<Transformation>& getTransformationAtIndex(size_t index) const;
+
+	void clearImages();
+	void clearTransformations();
+
+	size_t getImagesCount() const;
+	size_t getTransformationsCount() const;
+
+	Session(int id);
+
+	Session(Vector<PolymorphicPtr<TransformableImage>> images, Vector<PolymorphicPtr<Transformation>> transformations);
+	
+private:
+	int id = 0;
+	Vector<PolymorphicPtr<TransformableImage>> images;
+	Vector<PolymorphicPtr<Transformation>> transformations;
 };
 

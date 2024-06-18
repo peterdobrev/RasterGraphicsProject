@@ -12,12 +12,11 @@ public:
 	void saveData() override;
 	void clearData() override;
 
+	const Vector<uint8_t>& getData() const;
+
 	PGMImage* clone() const override;
-
-	PGMImage(String name) : TransformableImage(name) {}
-
-	PGMImage(Vector<uint8_t> data, String name, unsigned width, unsigned height)
-		: TransformableImage(name, width, height), data(data) {}
+	PGMImage(String name);
+	PGMImage(Vector<uint8_t> data, String name, unsigned width, unsigned height);
 
 protected:
 	void applyNegative() override;

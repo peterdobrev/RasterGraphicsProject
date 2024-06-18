@@ -2,16 +2,23 @@
 
 void NegativeCommand::execute() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		sessionPtr->images[i].get()->makeNegative();
+		sessionPtr->getImageAtIndex(i).get()->makeNegative();
 	}
+
+	sessionPtr->popBackTransformation();
 }
 
-Command* NegativeCommand::clone() const
+void NegativeCommand::print() const
+{
+	std::cout << "Negative";
+}
+
+Transformation* NegativeCommand::clone() const
 {
 	return new NegativeCommand(*this);
 }
 
-NegativeCommand::NegativeCommand(Session* sessionPtr) : UndoCommand(sessionPtr) {}
+NegativeCommand::NegativeCommand(Session* sessionPtr) : Transformation(sessionPtr) {}

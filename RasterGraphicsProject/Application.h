@@ -1,29 +1,31 @@
 #pragma once
 #include "Session.h"
+#include "Command.h"
+
 class Application
 {
 public:
 	void run();
-	void readCommand();
-	const Session& getSession() const;
-	static Application& getInstance()
-	{
-		static Application app;
-		return app;
-	}
+	
+	static Application& getInstance();
 
 private:
-	Session* activeSession = nullptr;
+	bool isRunning = false;
+	int activeSession = -1;
+	Vector<PolymorphicPtr<Session>> sessions;
 
 	Application() = default;
 
+	void readCommand();
+	void load();
+	void switchSession();
+	void help() const;
+	void close();
+	void exit();
+
 	Vector<PolymorphicPtr<TransformableImage>> getLoadImages() const;
-	void printSession() const;
-	void handleSwitchSession();
-	void addCommand(PolymorphicPtr<Command>& command);
-	void popBackCommand();
-	void switchSession(Session* other);
 	PolymorphicPtr<Command> parseCommand();
 
+	void deloadImagesFromCurrentSession();
 };
 

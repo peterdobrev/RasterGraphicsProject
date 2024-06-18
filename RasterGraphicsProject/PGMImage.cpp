@@ -1,4 +1,6 @@
 #include "PGMImage.h"
+#include "ImageDataLoader.h"
+#include "ImageDataSaver.h"
 
 void PGMImage::applyMonochrome()
 {
@@ -49,17 +51,34 @@ void PGMImage::applyRotation()
 
 void PGMImage::loadData()
 {
+	ImageDataLoader::loadPGMData(*this);
 }
 
 void PGMImage::saveData()
 {
+	confirmChanges();
+	ImageDataSaver::savePGMData(*this);
 }
 
 void PGMImage::clearData()
 {
+	data = Vector<uint8_t>();
+	width = 0;
+	height = 0;
+}
+
+const Vector<uint8_t>& PGMImage::getData() const
+{
+	return data;
 }
 
 PGMImage* PGMImage::clone() const
 {
 	return new PGMImage(*this);
 }
+
+PGMImage::PGMImage(String name)
+	: TransformableImage(name) {}
+
+PGMImage::PGMImage(Vector<uint8_t> data, String name, unsigned width, unsigned height)
+	: TransformableImage(name, width, height), data(data) {}

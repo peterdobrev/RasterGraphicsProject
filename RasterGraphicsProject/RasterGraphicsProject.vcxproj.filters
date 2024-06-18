@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -13,126 +9,148 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Images">
+    <Filter Include="Header Files\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Source Files\Images">
       <UniqueIdentifier>{327c739c-38c5-4da7-acf1-f32e23fc3da0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Factories">
+    <Filter Include="Header Files\Source Files\Factories">
       <UniqueIdentifier>{810a0316-13e9-4d39-8f6d-60fb6f105ecd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Commands">
+    <Filter Include="Header Files\Source Files\Commands">
       <UniqueIdentifier>{70585353-fc33-4085-8f86-507eb478927b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Application">
+    <Filter Include="Header Files\Source Files\Application">
       <UniqueIdentifier>{2600f729-250a-4989-9d9f-a0092b9f2c1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Session">
+    <Filter Include="Header Files\Source Files\Session">
       <UniqueIdentifier>{82087aa4-356b-44ec-a570-dcbcb65e1e5b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RasterGraphicsProject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CollageCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="AddCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PBMImage.cpp">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PGMImage.cpp">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="PPMImage.cpp">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Header Files\Source Files\Application</Filter>
     </ClCompile>
     <ClCompile Include="TransformableImageFactory.cpp">
-      <Filter>Source Files\Factories</Filter>
+      <Filter>Header Files\Source Files\Factories</Filter>
     </ClCompile>
     <ClCompile Include="Session.cpp">
-      <Filter>Source Files\Session</Filter>
+      <Filter>Header Files\Source Files\Session</Filter>
     </ClCompile>
     <ClCompile Include="Bitset.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="String.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RotatableObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pixel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommandFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GreyscaleCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="MonochromeCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="NegativeCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="RotateCommand.cpp">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="UndoCommand.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FastColorModifiableObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LoadableObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ImageDataLoader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TransformableObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageDataSaver.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintCommand.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveCommand.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveAsCommand.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transformation.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Header Files\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollageCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="AddCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="PBMImage.h">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="PGMImage.h">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="PPMImage.h">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="Application.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Header Files\Source Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="TransformableImageFactory.h">
-      <Filter>Source Files\Factories</Filter>
+      <Filter>Header Files\Source Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
-      <Filter>Source Files\Session</Filter>
+      <Filter>Header Files\Source Files\Session</Filter>
     </ClInclude>
     <ClInclude Include="Bitset.h">
       <Filter>Header Files</Filter>
@@ -144,7 +162,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TransformableObject.h">
-      <Filter>Source Files\Images</Filter>
+      <Filter>Header Files\Source Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="ColorModifiableObject.h">
       <Filter>Header Files</Filter>
@@ -162,16 +180,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NegativeCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="RotateCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="GreyscaleCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="MonochromeCommand.h">
-      <Filter>Source Files\Commands</Filter>
+      <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="FastColorModifiableObject.h">
       <Filter>Header Files</Filter>
@@ -186,6 +204,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ImageDataLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageDataSaver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveAsCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

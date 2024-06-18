@@ -13,12 +13,11 @@ public:
 	void saveData() override;
 	void clearData() override;
 
+	const Vector<Pixel>& getData() const;
+
 	PPMImage* clone() const override;
-
-	PPMImage(String name) : TransformableImage(name) {}
-
-	PPMImage(Vector<Pixel> data, String name, unsigned width, unsigned height)
-		: TransformableImage(name, width, height), data(data) {}
+	PPMImage(String name);
+	PPMImage(Vector<Pixel> data, String name, unsigned width, unsigned height);
 
 protected:
 	void applyNegative() override;

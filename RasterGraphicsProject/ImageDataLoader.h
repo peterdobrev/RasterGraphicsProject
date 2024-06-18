@@ -19,7 +19,6 @@ private:
 	static void loadPGMDataBinary(PGMImage& image, std::ifstream& file);
 	static void loadPPMDataASCII(PPMImage& image, std::ifstream& file);
 	static void loadPPMDataBinary(PPMImage& image, std::ifstream& file);
-private:
 	ImageDataLoader() = delete;
 };
 

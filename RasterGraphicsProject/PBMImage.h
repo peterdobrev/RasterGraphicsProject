@@ -7,18 +7,17 @@ class PBMImage : public TransformableImage
 	friend class ImageDataLoader;
 
 public:
+	PBMImage(String name);
+	PBMImage(BitSet data, String name, unsigned width, unsigned height);
+	TransformableImage* clone() const override;
+	
+	const BitSet& getData() const;
+
+protected:
 	void loadData() override;
 	void saveData() override;
 	void clearData() override;
-	
-	PBMImage(String name) : TransformableImage(name) {}
 
-	PBMImage(BitSet data, String name, unsigned width, unsigned height)
-		: TransformableImage(name, width, height), data(data) {}
-
-	TransformableImage* clone() const override;
-
-protected:
 	void applyNegative() override;
 	void applyMonochrome() override;
 	void applyGreyscale() override;

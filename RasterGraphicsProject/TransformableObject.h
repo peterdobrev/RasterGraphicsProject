@@ -4,6 +4,7 @@
 
 class TransformableObject : public FastColorModifiableObject, public RotatableObject
 {
+public:
 	virtual void confirmChanges();
 	TransformableObject* clone() const override = 0;
 };

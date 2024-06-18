@@ -23,7 +23,7 @@ Vector<PolymorphicPtr<TransformableImage>> TransformableImageFactory::createImag
 PolymorphicPtr<TransformableImage> TransformableImageFactory::createImageFromFile(String fileName)
 {
 	std::ifstream ifs;
-	ifs.open(fileName.c_str(), std::ios::_Nocreate);
+	ifs.open(fileName.c_str(), std::ios::_Nocreate + std::ios::_Noreplace);
 
 	if (!ifs.is_open())
 	{

@@ -1,11 +1,15 @@
 #pragma once
-#include "UndoCommand.h"
-class GreyscaleCommand : public UndoCommand
+#include "Transformation.h"
+class GreyscaleCommand : public Transformation
 {
 public:
 	GreyscaleCommand(Session* sessionPtr);
+	
 	virtual void execute() const override;
-	virtual Command* clone() const override;
+	virtual void print() const override;
 	void undo() const override;
+
+	virtual Transformation* clone() const override;
+
 };
 

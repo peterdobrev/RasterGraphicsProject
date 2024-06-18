@@ -2,25 +2,32 @@
 
 void MonochromeCommand::execute() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		sessionPtr->images[i].get()->makeMonochrome();
+		sessionPtr->getImageAtIndex(i).get()->makeMonochrome();
 	}
 }
 
-Command* MonochromeCommand::clone() const
+void MonochromeCommand::print() const
+{
+	std::cout << "Monochrome";
+}
+
+Transformation* MonochromeCommand::clone() const
 {
 	return new MonochromeCommand(*this);
 }
 
 void MonochromeCommand::undo() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		sessionPtr->images[i].get()->undoMonochrome();
+		sessionPtr->getImageAtIndex(i).get()->undoMonochrome();
 	}
+
+	sessionPtr->popBackTransformation();
 }
 
-MonochromeCommand::MonochromeCommand(Session* sessionPtr) : UndoCommand(sessionPtr) {}
+MonochromeCommand::MonochromeCommand(Session* sessionPtr) : Transformation(sessionPtr) {}

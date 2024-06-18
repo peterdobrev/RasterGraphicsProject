@@ -136,7 +136,11 @@
     <ClCompile Include="GreyscaleCommand.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageDataLoader.cpp" />
+    <ClCompile Include="ImageDataSaver.cpp" />
     <ClCompile Include="LoadableObject.cpp" />
+    <ClCompile Include="PrintCommand.cpp" />
+    <ClCompile Include="SaveAsCommand.cpp" />
+    <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="TransformableImageFactory.cpp" />
     <ClCompile Include="MonochromeCommand.cpp" />
     <ClCompile Include="NegativeCommand.cpp" />
@@ -150,7 +154,9 @@
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="TransformableObject.cpp" />
+    <ClCompile Include="Transformation.cpp" />
     <ClCompile Include="UndoCommand.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddCommand.h" />
@@ -164,7 +170,11 @@
     <ClInclude Include="GreyscaleCommand.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageDataLoader.h" />
+    <ClInclude Include="ImageDataSaver.h" />
     <ClInclude Include="LoadableObject.h" />
+    <ClInclude Include="PrintCommand.h" />
+    <ClInclude Include="SaveAsCommand.h" />
+    <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="TransformableImageFactory.h" />
     <ClInclude Include="MonochromeCommand.h" />
     <ClInclude Include="NegativeCommand.h" />
@@ -179,7 +189,9 @@
     <ClInclude Include="String.h" />
     <ClInclude Include="TransformableImage.h" />
     <ClInclude Include="TransformableObject.h" />
+    <ClInclude Include="Transformation.h" />
     <ClInclude Include="UndoCommand.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

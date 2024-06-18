@@ -29,7 +29,30 @@ void Pixel::makeNegative()
 	B = UINT8_MAX - B;
 }
 
+uint8_t Pixel::getR() const
+{
+	return R;
+}
+
+uint8_t Pixel::getG() const
+{
+	return G;
+}
+
+uint8_t Pixel::getB() const
+{
+	return B;
+}
+
 ColorModifiableObject* Pixel::clone() const
 {
 	return new Pixel(*this);
+}
+
+std::ofstream& operator<<(std::ofstream& os, const Pixel& pixel)
+{
+	os << static_cast<int>(pixel.R) << " "
+		<< static_cast<int>(pixel.G) << " "
+		<< static_cast<int>(pixel.B);
+	return os;
 }

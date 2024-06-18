@@ -6,51 +6,71 @@
 #include "AddCommand.h"
 #include "CollageCommand.h"
 #include "String.h"
+#include "SaveAsCommand.h"
 
 PolymorphicPtr<Command> CommandFactory::createCommand(String commandType, Session* sessionPtr)
 {
     if (commandType == "monochrome")
     {
-        return createMonochromeCommand(sessionPtr);
+        auto command = createMonochromeCommand(sessionPtr);
+        return command;
     }
     if (commandType == "greyscale")
     {
-        return createGreyscaleCommand(sessionPtr);
+        auto command = createGreyscaleCommand(sessionPtr);
+        return command;
     }
     if (commandType == "negative")
     {
-        return createNegativeCommand(sessionPtr);
+        auto command = createNegativeCommand(sessionPtr);
+        return command;
     }
     if (commandType == "rotate")
     {
-        return createRotateCommand(sessionPtr);
+        auto command = createRotateCommand(sessionPtr);
+        return command;
     }
     if (commandType == "add")
     {
-        return createAddCommand(sessionPtr);
+        auto command = createAddCommand(sessionPtr);
+        return command;
     }
     if (commandType == "collage")
     {
-        return createCollageCommand(sessionPtr);
+        auto command = createCollageCommand(sessionPtr);
+        return command;
+    }
+    if (commandType == "save")
+    {
+        auto command = createSaveCommand(sessionPtr);
+        return command;
+    }
+    if (commandType == "saveas")
+    {
+        auto command = createSaveAsCommand(sessionPtr);
+        return command;
     }
 }
 
 PolymorphicPtr<Command> CommandFactory::createMonochromeCommand(Session* sessionPtr)
 {
     MonochromeCommand* command = new MonochromeCommand(sessionPtr);
+    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
     return PolymorphicPtr<Command>(command);
 }
 
 PolymorphicPtr<Command> CommandFactory::createGreyscaleCommand(Session* sessionPtr)
 {
     GreyscaleCommand* command = new GreyscaleCommand(sessionPtr);
-    return PolymorphicPtr<Command>(command);
+    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
+    return PolymorphicPtr<Command>(command);;
 }
 
 PolymorphicPtr<Command> CommandFactory::createNegativeCommand(Session* sessionPtr)
 {
     NegativeCommand* command = new NegativeCommand(sessionPtr);
-    return PolymorphicPtr<Command>(command);
+    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
+    return PolymorphicPtr<Command>(command);;
 }
 
 PolymorphicPtr<Command> CommandFactory::createRotateCommand(Session* sessionPtr)
@@ -58,33 +78,32 @@ PolymorphicPtr<Command> CommandFactory::createRotateCommand(Session* sessionPtr)
     String direction;
     std::cin >> direction;
 
+    RotateCommand* rotateCommand = nullptr;
+
     if (direction == "left")
     {
-        RotateCommand* command = new RotateCommand(sessionPtr, RotateCommand::Direction::left);
-        return PolymorphicPtr<Command>(command);
+        rotateCommand = new RotateCommand(sessionPtr, RotateCommand::Direction::left);
     }
     if (direction == "right")
     {
-        RotateCommand* command = new RotateCommand(sessionPtr, RotateCommand::Direction::right);
-        return PolymorphicPtr<Command>(command);
+        rotateCommand = new RotateCommand(sessionPtr, RotateCommand::Direction::right);
     }
 
-    return PolymorphicPtr<Command>();
+    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(rotateCommand));
+    return PolymorphicPtr<Command>(rotateCommand);
 }
 
 PolymorphicPtr<Command> CommandFactory::createAddCommand(Session* sessionPtr)
 {
     String fileName;
     std::cin >> fileName;
-    AddCommand* addCommand = new AddCommand(sessionPtr, fileName);
-    PolymorphicPtr<Command> command(addCommand);
-    return command;
+    return new AddCommand(sessionPtr, fileName);
 }
 
 PolymorphicPtr<Command> CommandFactory::createCollageCommand(Session* sessionPtr)
 {
     String imageName1, imageName2, outImageName, directionString;
-    CollageCommand::Direction direction;
+    CollageCommand::Direction direction = CollageCommand::Direction::horizontal;
 
     std::cin >> directionString >> imageName1 >> imageName2 >> outImageName;
 
@@ -97,8 +116,21 @@ PolymorphicPtr<Command> CommandFactory::createCollageCommand(Session* sessionPtr
         direction = CollageCommand::Direction::vertical;
     }
 
-    CollageCommand* command = new CollageCommand(sessionPtr, direction, imageName1, imageName2, outImageName);
+    return new CollageCommand(sessionPtr, direction, imageName1, imageName2, outImageName);
+}
 
-    return PolymorphicPtr<Command>(command);
+PolymorphicPtr<Command> CommandFactory::createSaveCommand(Session* sessionPtr)
+{
+    SaveCommand* saveCommand = new SaveCommand(sessionPtr);
+    return PolymorphicPtr<Command>(saveCommand);
+}
+
+PolymorphicPtr<Command> CommandFactory::createSaveAsCommand(Session* sessionPtr)
+{
+    String newName;
+    std::cin >> newName;
+
+    SaveAsCommand* saveCommand = new SaveAsCommand(sessionPtr, newName);
+    return PolymorphicPtr<Command>(saveCommand);
 }
 

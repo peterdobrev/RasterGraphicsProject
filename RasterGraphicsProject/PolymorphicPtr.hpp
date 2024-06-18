@@ -120,7 +120,12 @@ void PolymorphicPtr<T>::free() {
 
 template<typename T>
 void PolymorphicPtr<T>::copyFrom(const PolymorphicPtr& other) {
-	ptr = other.ptr->clone();
+	if (other.ptr) {
+		ptr = other.ptr->clone();  // Ensure the clone method is properly implemented in all derived classes
+	}
+	else {
+		ptr = nullptr;
+	}
 }
 
 template<typename T>

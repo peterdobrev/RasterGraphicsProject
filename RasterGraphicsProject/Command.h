@@ -7,6 +7,7 @@ public:
 
 	virtual void execute() const = 0;
 	virtual Command* clone() const = 0;
+	virtual void print() const = 0;
 	virtual ~Command() = default;
 
 protected:

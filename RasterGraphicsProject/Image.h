@@ -9,6 +9,11 @@ public:
 	
 	
 	const String& getName() const;	
+	unsigned getWidth() const;
+	unsigned getHeight() const;
+
+	void setName(const String& newName);
+
 	virtual ~Image() = default;
 protected:
 	String name;

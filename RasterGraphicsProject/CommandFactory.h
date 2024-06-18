@@ -14,6 +14,8 @@ private:
 	static PolymorphicPtr<Command> createRotateCommand(Session* sessionPtr);
 	static PolymorphicPtr<Command> createAddCommand(Session* sessionPtr);
 	static PolymorphicPtr<Command> createCollageCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createSaveCommand(Session* sessionPtr);
+	static PolymorphicPtr<Command> createSaveAsCommand(Session* sessionPtr);
 
 };
 

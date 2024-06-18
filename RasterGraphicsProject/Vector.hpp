@@ -49,6 +49,8 @@ public:
 	T& operator[](size_t index);
 	const T& operator[](size_t index) const;
 
+	const T* dataPtr() const;
+
 private:
 	void move(Vector<T>&& other);
 	void copyFrom(const Vector<T>& other);
@@ -238,6 +240,11 @@ const T& Vector<T>::operator[](size_t index) const {
 	assertIndex(index);
 
 	return data[index];
+}
+
+template<typename T>
+const T* Vector<T>::dataPtr() const {
+	return data;
 }
 
 template<typename T>

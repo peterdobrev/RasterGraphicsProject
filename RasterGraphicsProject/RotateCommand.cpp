@@ -1,34 +1,45 @@
 #include "RotateCommand.h"
 
-RotateCommand::RotateCommand(Session* sessionPtr, Direction direction) : UndoCommand(sessionPtr), direction(direction)
+RotateCommand::RotateCommand(Session* sessionPtr, Direction direction) : Transformation(sessionPtr), direction(direction)
 {
 }
 
 void RotateCommand::execute() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
 		if (direction == Direction::left)
-			sessionPtr->images[i].get()->rotateLeft();
+			sessionPtr->getImageAtIndex(i).get()->rotateLeft();
 		else
-			sessionPtr->images[i].get()->rotateRight();
+			sessionPtr->getImageAtIndex(i).get()->rotateRight();
 	}
 }
 
-Command* RotateCommand::clone() const
+void RotateCommand::print() const
+{
+	std::cout << "Rotate ";
+	if (direction == Direction::left)
+		std::cout << "left";
+	else
+		std::cout << "right";
+}
+
+Transformation* RotateCommand::clone() const
 {
 	return new RotateCommand(*this);
 }
 
 void RotateCommand::undo() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
 		if (direction == Direction::left)
-			sessionPtr->images[i].get()->rotateRight();
+			sessionPtr->getImageAtIndex(i).get()->rotateRight();
 		else
-			sessionPtr->images[i].get()->rotateLeft();
+			sessionPtr->getImageAtIndex(i).get()->rotateLeft();
 	}
+
+	sessionPtr->popBackTransformation();
 }

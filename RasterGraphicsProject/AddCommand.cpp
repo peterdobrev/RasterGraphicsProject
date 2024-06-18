@@ -3,10 +3,10 @@
 
 void AddCommand::execute() const
 {
-	size_t length = sessionPtr->images.getSize();
+	size_t length = sessionPtr->getImagesCount();
 	for (size_t i = 0; i < length; i++)
 	{
-		if (sessionPtr->images[i].get()->getName() == fileName)
+		if (sessionPtr->getImageAtIndex(i).get()->getName() == fileName)
 		{
 			// Don't add if already added!
 			return;
@@ -14,12 +14,17 @@ void AddCommand::execute() const
 	}
 
 	PolymorphicPtr<TransformableImage> image = TransformableImageFactory::createImageFromFile(fileName);
-	sessionPtr->images.pushBack(image);
+	sessionPtr->addImage(image);
 }
 
-AddCommand::AddCommand(Session* sessionPtr, String fileName) : UndoCommand(sessionPtr), fileName(fileName)
+void AddCommand::print() const
 {
-	
+	std::cout << "Add " << fileName;
+}
+
+AddCommand::AddCommand(Session* sessionPtr, String fileName) : Command(sessionPtr), fileName(fileName)
+{
+		
 }
 
 Command* AddCommand::clone() const
@@ -27,7 +32,3 @@ Command* AddCommand::clone() const
 	return new AddCommand(*this);
 }
 
-void AddCommand::undo() const
-{
-
-}

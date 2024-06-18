@@ -78,6 +78,11 @@ bool BitSet::getBit(unsigned num) const
 	return buckets[bucketIndex] & mask;
 }
 
+bool BitSet::operator[](unsigned num) const
+{
+	return getBit(num);
+}
+
 unsigned BitSet::getN() const
 {
 	return N;
@@ -86,7 +91,7 @@ unsigned BitSet::getN() const
 void BitSet::print() const
 {
 	std::cout << '{';
-	for (int i = 0; i <= N; i++)
+	for (unsigned i = 0; i <= N; i++)
 	{
 		if (getBit(i))
 			std::cout << i << " ";
@@ -100,12 +105,12 @@ BitSet UnionOfSets(const BitSet& lhs, const BitSet& rhs)
 	BitSet result(std::max(lhs.N, rhs.N));
 
 	unsigned minBucketsCount = std::min(lhs.bucketsCount, rhs.bucketsCount);
-	for (int i = 0; i < minBucketsCount; i++)
+	for (unsigned i = 0; i < minBucketsCount; i++)
 		result.buckets[i] = lhs.buckets[i] | rhs.buckets[i];
 
 	const BitSet& biggerN = lhs.bucketsCount > rhs.bucketsCount ? lhs : rhs; //no copy here
 
-	for (int i = minBucketsCount; i < biggerN.bucketsCount; i++)
+	for (unsigned i = minBucketsCount; i < biggerN.bucketsCount; i++)
 		result.buckets[i] = biggerN.buckets[i];
 	return result;
 }
@@ -115,7 +120,7 @@ BitSet IntersectionOfSets(const BitSet& lhs, const BitSet& rhs)
 	BitSet result(std::min(lhs.N, rhs.N));
 
 	unsigned minBucketsCount = std::min(lhs.bucketsCount, rhs.bucketsCount);
-	for (int i = 0; i < minBucketsCount; i++)
+	for (unsigned i = 0; i < minBucketsCount; i++)
 		result.buckets[i] = lhs.buckets[i] & rhs.buckets[i];
 	return result;
 }
