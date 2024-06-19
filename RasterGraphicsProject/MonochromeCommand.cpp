@@ -9,7 +9,12 @@ void MonochromeCommand::execute() const
 	}
 }
 
-void MonochromeCommand::print() const
+void MonochromeCommand::printFeedback() const
+{
+	std::cout << "Monochrome command executed!";
+}
+
+void MonochromeCommand::printInfo() const
 {
 	std::cout << "Monochrome";
 }

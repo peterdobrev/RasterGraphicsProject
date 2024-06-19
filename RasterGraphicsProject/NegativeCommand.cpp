@@ -7,13 +7,22 @@ void NegativeCommand::execute() const
 	{
 		sessionPtr->getImageAtIndex(i).get()->makeNegative();
 	}
-
-	sessionPtr->popBackTransformation();
 }
 
-void NegativeCommand::print() const
+void NegativeCommand::printFeedback() const
+{
+	std::cout << "Negative command executed!";
+}
+
+void NegativeCommand::printInfo() const
 {
 	std::cout << "Negative";
+}
+
+void NegativeCommand::undo() const
+{
+	execute();
+	sessionPtr->popBackTransformation();
 }
 
 Transformation* NegativeCommand::clone() const

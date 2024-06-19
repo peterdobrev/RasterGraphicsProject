@@ -21,7 +21,12 @@ Command* SaveCommand::clone() const
     return nullptr;
 }
 
-void SaveCommand::print() const
+void SaveCommand::printFeedback() const
+{
+    std::cout << "Save command executed!";
+}
+
+void SaveCommand::printInfo() const
 {
     std::cout << "Save";
 }

@@ -7,69 +7,72 @@
 #include "CollageCommand.h"
 #include "String.h"
 #include "SaveAsCommand.h"
+#include "PrintCommand.h"
 
 PolymorphicPtr<Command> CommandFactory::createCommand(String commandType, Session* sessionPtr)
 {
+    PolymorphicPtr<Command> command;
     if (commandType == "monochrome")
     {
-        auto command = createMonochromeCommand(sessionPtr);
-        return command;
+        return createMonochromeCommand(sessionPtr);
     }
-    if (commandType == "greyscale")
+    else if (commandType == "greyscale")
     {
-        auto command = createGreyscaleCommand(sessionPtr);
-        return command;
+        return createGreyscaleCommand(sessionPtr);
     }
-    if (commandType == "negative")
+    else if (commandType == "negative")
     {
-        auto command = createNegativeCommand(sessionPtr);
-        return command;
+        return createNegativeCommand(sessionPtr);
     }
-    if (commandType == "rotate")
+    else if (commandType == "rotate")
     {
-        auto command = createRotateCommand(sessionPtr);
-        return command;
+        return createRotateCommand(sessionPtr);
     }
-    if (commandType == "add")
+    else if (commandType == "add")
     {
-        auto command = createAddCommand(sessionPtr);
-        return command;
+        return createAddCommand(sessionPtr);
     }
-    if (commandType == "collage")
+    else if (commandType == "collage")
     {
-        auto command = createCollageCommand(sessionPtr);
-        return command;
+        return createCollageCommand(sessionPtr);
     }
-    if (commandType == "save")
+    else if (commandType == "save")
     {
-        auto command = createSaveCommand(sessionPtr);
-        return command;
+        return createSaveCommand(sessionPtr);
     }
-    if (commandType == "saveas")
+    else if (commandType == "saveas")
     {
-        auto command = createSaveAsCommand(sessionPtr);
-        return command;
+        return createSaveAsCommand(sessionPtr);
     }
+    else if (commandType == "print")
+    {
+        return createPrintCommand(sessionPtr);
+    }
+
+    return command;
 }
 
 PolymorphicPtr<Command> CommandFactory::createMonochromeCommand(Session* sessionPtr)
 {
     MonochromeCommand* command = new MonochromeCommand(sessionPtr);
-    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
+    PolymorphicPtr<Transformation> transformation(command->clone());
+    sessionPtr->addTransformation(std::move(transformation));
     return PolymorphicPtr<Command>(command);
 }
 
 PolymorphicPtr<Command> CommandFactory::createGreyscaleCommand(Session* sessionPtr)
 {
     GreyscaleCommand* command = new GreyscaleCommand(sessionPtr);
-    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
+    PolymorphicPtr<Transformation> transformation(command->clone());
+    sessionPtr->addTransformation(std::move(transformation));
     return PolymorphicPtr<Command>(command);;
 }
 
 PolymorphicPtr<Command> CommandFactory::createNegativeCommand(Session* sessionPtr)
 {
     NegativeCommand* command = new NegativeCommand(sessionPtr);
-    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(command));
+    PolymorphicPtr<Transformation> transformation(command->clone());
+    sessionPtr->addTransformation(std::move(transformation));
     return PolymorphicPtr<Command>(command);;
 }
 
@@ -78,19 +81,24 @@ PolymorphicPtr<Command> CommandFactory::createRotateCommand(Session* sessionPtr)
     String direction;
     std::cin >> direction;
 
-    RotateCommand* rotateCommand = nullptr;
+    RotateCommand* command = nullptr;
 
     if (direction == "left")
     {
-        rotateCommand = new RotateCommand(sessionPtr, RotateCommand::Direction::left);
+        command = new RotateCommand(sessionPtr, RotateCommand::Direction::left);
     }
-    if (direction == "right")
+    else if (direction == "right")
     {
-        rotateCommand = new RotateCommand(sessionPtr, RotateCommand::Direction::right);
+        command = new RotateCommand(sessionPtr, RotateCommand::Direction::right);
     }
 
-    sessionPtr->addTransformation(PolymorphicPtr<Transformation>(rotateCommand));
-    return PolymorphicPtr<Command>(rotateCommand);
+    if (command)
+    {
+        PolymorphicPtr<Transformation> transformation(command->clone());
+        sessionPtr->addTransformation(std::move(transformation));
+    }
+
+    return PolymorphicPtr<Command>(command);
 }
 
 PolymorphicPtr<Command> CommandFactory::createAddCommand(Session* sessionPtr)
@@ -132,5 +140,11 @@ PolymorphicPtr<Command> CommandFactory::createSaveAsCommand(Session* sessionPtr)
 
     SaveAsCommand* saveCommand = new SaveAsCommand(sessionPtr, newName);
     return PolymorphicPtr<Command>(saveCommand);
+}
+
+PolymorphicPtr<Command> CommandFactory::createPrintCommand(Session* sessionPtr)
+{
+    PrintCommand* command = new PrintCommand(sessionPtr);
+    return PolymorphicPtr<Command>(command);
 }
 

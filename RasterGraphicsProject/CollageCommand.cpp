@@ -24,9 +24,14 @@ void CollageCommand::execute() const
 	}
 }
 
-void CollageCommand::print() const
+void CollageCommand::printFeedback() const
 {
-	std::cout << "Collage " << imagePath1 << " " << imagePath2 << " " << outImagePath;
+	std::cout << "Collage \"" << imagePath1 << "\" with \"" << imagePath2 << "\" and save to \"" << outImagePath << "\" command executed!";
+}
+
+void CollageCommand::printInfo() const
+{
+	std::cout << "Collage \"" << imagePath1 << "\" with \"" << imagePath2 << "\" and save to \"" << outImagePath;
 }
 
 CollageCommand::CollageCommand(Session* sessionPtr, Direction direction, String imagePath1, String imagePath2, String outImagePath) 

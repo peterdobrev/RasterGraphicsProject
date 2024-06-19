@@ -7,6 +7,7 @@ public:
 	// Inherited via Command
 	virtual void execute() const override;
 	virtual Command* clone() const override;
-	virtual void print() const override;
+	virtual void printFeedback() const override;
+	void printInfo() const override;
 };
 

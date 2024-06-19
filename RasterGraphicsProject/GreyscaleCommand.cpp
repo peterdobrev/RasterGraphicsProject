@@ -11,7 +11,12 @@ void GreyscaleCommand::execute() const
 	}
 }
 
-void GreyscaleCommand::print() const
+void GreyscaleCommand::printFeedback() const
+{
+	std::cout << "Greyscale command executed!";
+}
+
+void GreyscaleCommand::printInfo() const
 {
 	std::cout << "Greyscale";
 }

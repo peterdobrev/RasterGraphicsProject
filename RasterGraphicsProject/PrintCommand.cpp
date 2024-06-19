@@ -7,7 +7,8 @@ PrintCommand::PrintCommand(Session* sessionPtr)
 
 void PrintCommand::execute() const
 {
-    sessionPtr->print();
+    sessionPtr->printFeedback();
+    std::cout << std::endl;
 }
 
 Command* PrintCommand::clone() const
@@ -15,7 +16,12 @@ Command* PrintCommand::clone() const
     return new PrintCommand(*this);
 }
 
-void PrintCommand::print() const
+void PrintCommand::printFeedback() const
+{
+    std::cout << "Print command executed!";
+}
+
+void PrintCommand::printInfo() const
 {
     std::cout << "Print";
 }

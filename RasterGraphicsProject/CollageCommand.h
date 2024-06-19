@@ -15,7 +15,8 @@ public:
 	};
 
 	void execute() const override;
-	void print() const override;
+	void printFeedback() const override;
+	void printInfo() const override;
 	CollageCommand(Session* sessionPtr, Direction direction, 
 		String imagePath1, String imagePath2, String outImagePath);
 	virtual Command* clone() const override;

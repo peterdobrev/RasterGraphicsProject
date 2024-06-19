@@ -11,7 +11,7 @@ public:
 	int getId() const;
 
 	void execute();
-	void print() const;
+	void printFeedback() const;
 
 	void popBackImage();
 	void popBackTransformation();

@@ -16,7 +16,17 @@ void RotateCommand::execute() const
 	}
 }
 
-void RotateCommand::print() const
+void RotateCommand::printFeedback() const
+{
+	std::cout << "Rotate ";
+	if (direction == Direction::left)
+		std::cout << "left";
+	else
+		std::cout << "right";
+	std::cout << " command executed!";
+}
+
+void RotateCommand::printInfo() const
 {
 	std::cout << "Rotate ";
 	if (direction == Direction::left)

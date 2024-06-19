@@ -16,7 +16,7 @@ void Session::execute()
 	}
 }
 
-void Session::print() const
+void Session::printFeedback() const
 {
 	size_t imagesLength = images.getSize();
 	size_t transformationsLength = transformations.getSize();
@@ -30,7 +30,10 @@ void Session::print() const
 	std::cout << "Pending transformations: ";
 	for (size_t i = 0; i < transformationsLength; i++)
 	{
-		std::cout << transformations[i].get();
+		transformations[i].get()->printInfo();
+		
+		if(i != transformationsLength - 1)
+			std::cout << ", ";
 	}
 }
 
@@ -91,7 +94,8 @@ void Session::clearImages()
 
 void Session::clearTransformations()
 {
-	transformations.clear();
+	Vector<PolymorphicPtr<Transformation>> newTransformations;
+	transformations = newTransformations;
 }
 
 size_t Session::getImagesCount() const

@@ -19,6 +19,7 @@ private:
 	void readCommand();
 	void load();
 	void switchSession();
+	void undo();
 	void help() const;
 	void close();
 	void exit();

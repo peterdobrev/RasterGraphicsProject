@@ -88,7 +88,7 @@ unsigned BitSet::getN() const
 	return N;
 }
 
-void BitSet::print() const
+void BitSet::printFeedback() const
 {
 	std::cout << '{';
 	for (unsigned i = 0; i <= N; i++)

@@ -25,7 +25,7 @@ public:
 	bool getBit(unsigned num) const;
 	bool operator[](unsigned num) const;
 	unsigned getN() const;
-	void print() const;
+	void printFeedback() const;
 	friend BitSet UnionOfSets(const BitSet& lhs, const BitSet& rhs);
 	friend BitSet IntersectionOfSets(const BitSet& lhs, const BitSet& rhs);
 

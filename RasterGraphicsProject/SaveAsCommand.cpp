@@ -12,9 +12,14 @@ Command* SaveAsCommand::clone() const
 	return new SaveAsCommand(*this);
 }
 
-void SaveAsCommand::print() const
+void SaveAsCommand::printFeedback() const
 {
-	std::cout << "Save As " << fileName;
+	std::cout << "Save As \"" << fileName << "\" command executed!";
+}
+
+void SaveAsCommand::printInfo() const
+{
+	std::cout << "Save as " << fileName;
 }
 
 SaveAsCommand::SaveAsCommand(Session* sessionPtr, const String& fileName)

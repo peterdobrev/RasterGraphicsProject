@@ -27,7 +27,9 @@ void Application::run()
     isRunning = true;
     while (isRunning)
     {
+        std::cout << "> ";
         readCommand();
+        std::cout << std::endl;
     }
 }
 
@@ -37,7 +39,7 @@ void Application::readCommand()
     if (commandPtr.get())
     {
         commandPtr.get()->execute();
-        commandPtr.get()->print();
+        commandPtr.get()->printFeedback();
     }
 }
 
@@ -56,6 +58,10 @@ PolymorphicPtr<Command> Application::parseCommand()
     {
         switchSession();
     }
+    else if (commandType == "undo")
+    {
+        undo();
+    }
     else if (commandType == "help")
     {
         help();
@@ -70,7 +76,16 @@ PolymorphicPtr<Command> Application::parseCommand()
     }
     else if(activeSession >= 0) // if there is an active session
     {
-        command = CommandFactory::createCommand(commandType, sessions[activeSession].get());
+        command = std::move(CommandFactory::createCommand(commandType, sessions[activeSession].get()));
+
+        if (!command.get())
+        {
+            std::cerr << "Command not recognized! See \'help\' for list of commands!";
+        }
+    }
+    else
+    {
+        std::cerr << "No active session! See \'help\' for list of commands!";
     }
 
     return command;
@@ -102,9 +117,8 @@ void Application::load()
     size_t length = images.getSize();
     for (size_t i = 0; i < length; i++)
     {
-        std::cout << images[i].get()->getName() << " ";
+        std::cout << "\"" << images[i].get()->getName() << "\" ";
     }
-    std::cout << std::endl;
 }
 
 void Application::switchSession()
@@ -121,6 +135,13 @@ void Application::switchSession()
     {
         throw std::exception("No such session exists!");
     }
+}
+
+void Application::undo()
+{
+    size_t lastTransformationIndex = sessions[activeSession]->getTransformationsCount() - 1;
+    sessions[activeSession]->getTransformationAtIndex(lastTransformationIndex)->undo();
+    sessions[activeSession]->popBackTransformation();
 }
 
 void Application::help() const

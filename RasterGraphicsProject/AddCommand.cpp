@@ -17,7 +17,12 @@ void AddCommand::execute() const
 	sessionPtr->addImage(image);
 }
 
-void AddCommand::print() const
+void AddCommand::printFeedback() const
+{
+	std::cout << "Add \"" << fileName << "\" command executed!";
+}
+
+void AddCommand::printInfo() const
 {
 	std::cout << "Add " << fileName;
 }
