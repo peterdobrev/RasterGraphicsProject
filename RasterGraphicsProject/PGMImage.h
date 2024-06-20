@@ -13,10 +13,11 @@ public:
 	void clearData() override;
 
 	const Vector<uint8_t>& getData() const;
+	uint8_t getMaxNumber() const;
 
 	PGMImage* clone() const override;
 	PGMImage(String name);
-	PGMImage(Vector<uint8_t> data, String name, unsigned width, unsigned height);
+	PGMImage(Vector<uint8_t> data, String name, unsigned width, unsigned height, uint8_t maxNumber);
 
 protected:
 	void applyNegative() override;
@@ -25,6 +26,11 @@ protected:
 	void applyRotation() override;
 
 private:
-	 Vector<uint8_t> data;
+	uint8_t maxNumber = UINT8_MAX;
+	Vector<uint8_t> data;
+
+	void rotate90Degrees();
+	void rotate180Degrees();
+	void rotate270Degrees();
 };
 

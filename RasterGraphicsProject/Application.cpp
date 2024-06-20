@@ -28,7 +28,16 @@ void Application::run()
     while (isRunning)
     {
         std::cout << "> ";
-        readCommand();
+
+        //try {
+            readCommand();
+        //}
+
+        //catch (std::exception e)
+        //{
+            //std::cout << e.what();
+        //}
+
         std::cout << std::endl;
     }
 }
@@ -130,6 +139,7 @@ void Application::switchSession()
     {
         deloadImagesFromCurrentSession();
         activeSession = id;
+        std::cout << "Switched to session " << activeSession;
     }
     else
     {
@@ -205,12 +215,18 @@ void Application::close()
     if (activeSession >= 0)
     {
         activeSession = -1;
+        std::cout << "Closed active session!";
+    }
+    else
+    {
+        std::cerr << "No active session! Create session first! See \'help\' for list of commands!";
     }
 }
 
 void Application::exit()
 {
     close();
+    std::cout << "\nExiting...";
     isRunning = false;
 }
 

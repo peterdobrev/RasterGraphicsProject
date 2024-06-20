@@ -2,8 +2,8 @@
 
 void SaveAsCommand::execute() const
 {
+	sessionPtr->getImageAtIndex(0)->loadData();
 	sessionPtr->getImageAtIndex(0)->setName(fileName);
-
 	SaveCommand::execute();
 }
 

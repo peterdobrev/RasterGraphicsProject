@@ -1,26 +1,19 @@
 #pragma once
 #include <cstdint>
-#include "ColorModifiableObject.h"
 #include <fstream>
 
-class Pixel : public ColorModifiableObject
+class Pixel 
 {
 public:
 	Pixel();
 	Pixel(uint8_t R, uint8_t G, uint8_t B);
-	// Inherited via ColorModifiableObject
-	void makeGreyscale() override;
-	void makeMonochrome() override;
-	void makeNegative() override;
 
 	uint8_t getR() const;
 	uint8_t getG() const;
 	uint8_t getB() const;
 
-	virtual ColorModifiableObject* clone() const override;
-
-	friend std::ofstream& operator<<(std::ofstream& os, const Pixel& pixel);
-private:
-	uint8_t R, G, B;
+	friend std::ostream& operator<<(std::ostream& os, const Pixel& pixel);
+protected:
+	uint8_t R = 0, G = 0, B = 0;
 };
 

@@ -26,5 +26,9 @@ protected:
 private:
 	BitSet data;
 
+	void rotate90Degrees();
+	void rotate180Degrees();
+	void rotate270Degrees();
+
 };
 

@@ -5,5 +5,5 @@ void TransformableObject::confirmChanges()
 	applyRotation();
 	applyMonochrome();
 	applyGreyscale();
-	applyRotation();
+	applyNegative();
 }

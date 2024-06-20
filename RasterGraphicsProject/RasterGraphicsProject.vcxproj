@@ -131,6 +131,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Bitset.cpp" />
     <ClCompile Include="CollageCommand.cpp" />
+    <ClCompile Include="ColorModifiablePixel.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="FastColorModifiableObject.cpp" />
     <ClCompile Include="GreyscaleCommand.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Bitset.h" />
     <ClInclude Include="CollageCommand.h" />
     <ClInclude Include="ColorModifiableObject.h" />
+    <ClInclude Include="ColorModifiablePixel.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="FastColorModifiableObject.h" />

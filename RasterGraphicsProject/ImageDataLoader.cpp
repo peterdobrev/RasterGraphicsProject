@@ -8,7 +8,8 @@ void ImageDataLoader::loadPBMData(PBMImage& image)
 
 	if (!file.is_open())
 	{
-		std::exception("Can't load PBM Data");
+		const char* message = "Can't load PBM Data";
+		throw std::exception(message);
 	}
 
 
@@ -32,7 +33,8 @@ void ImageDataLoader::loadPGMData(PGMImage& image)
 
 	if (!file.is_open())
 	{
-		std::exception("Can't load PGM Data");
+		const char* message = "Can't load PGM Data";
+		throw std::exception(message);
 	}
 
 	String magicNumber;
@@ -55,18 +57,19 @@ void ImageDataLoader::loadPPMData(PPMImage& image)
 
 	if (!file.is_open())
 	{
-		std::exception("Can't load PPM Data");
+		const char* message = "Can't load PPM Data";
+		throw std::exception(message);
 	}
 
 
 	String magicNumber;
 	file >> magicNumber;
 
-	if (magicNumber == "P1")
+	if (magicNumber == "P3")
 	{
 		loadPPMDataASCII(image, file);
 	}
-	else if (magicNumber == "P4")
+	else if (magicNumber == "P6")
 	{
 		loadPPMDataBinary(image, file);
 	}
@@ -78,7 +81,7 @@ void ImageDataLoader::loadPBMDataASCII(PBMImage& image, std::ifstream& file)
 	file >> height >> width;
 
 	BitSet data(width * height);
-	for (size_t i = 0; i < width * height; i++)
+	for (unsigned i = 0; i < width * height; i++)
 	{
 		char bit;
 		file >> bit;
@@ -100,15 +103,15 @@ void ImageDataLoader::loadPBMDataBinary(PBMImage& image, std::ifstream& file)
 
 void ImageDataLoader::loadPGMDataASCII(PGMImage& image, std::ifstream& file)
 {
-	unsigned width, height, maxValue;
-	file >> height >> width >> maxValue;
+	unsigned width, height, maxNumber;
+	file >> height >> width >> maxNumber;
 
 	Vector<uint8_t> data(width * height);
-	for (size_t i = 0; i < width * height; i++)
+	for (unsigned i = 0; i < width * height; i++)
 	{
 		unsigned value;
 		file >> value;
-		if (value > maxValue)
+		if (value > maxNumber)
 		{
 			throw std::invalid_argument("Value is bigger than allowed!");
 		}
@@ -119,6 +122,7 @@ void ImageDataLoader::loadPGMDataASCII(PGMImage& image, std::ifstream& file)
 	image.data = data;
 	image.width = width;
 	image.height = height;
+	image.maxNumber = maxNumber;
 }
 
 void ImageDataLoader::loadPGMDataBinary(PGMImage& image, std::ifstream& file)
@@ -128,26 +132,27 @@ void ImageDataLoader::loadPGMDataBinary(PGMImage& image, std::ifstream& file)
 
 void ImageDataLoader::loadPPMDataASCII(PPMImage& image, std::ifstream& file)
 {
-	unsigned width, height, maxValue;
-	file >> height >> width >> maxValue;
+	unsigned width, height, maxNumber;
+	file >> height >> width >> maxNumber;
 
-	Vector<Pixel> data(width * height);
-	for (size_t i = 0; i < width * height; i++)
+	Vector<ColorModifiablePixel> data(width * height);
+	for (unsigned i = 0; i < width * height; i++)
 	{
 		unsigned R, G, B;
 		file >> R >> G >> B;
-		if (R > maxValue || G > maxValue || B > maxValue)
+		if (R > maxNumber || G > maxNumber || B > maxNumber)
 		{
 			throw std::invalid_argument("Value is bigger than allowed!");
 		}
 
-		Pixel pixel(R, G, B);
+		ColorModifiablePixel pixel(R, G, B);
 		data.pushBack(pixel);
 	}
 
 	image.data = data;
 	image.width = width;
 	image.height = height;
+	image.maxNumber = maxNumber;
 }
 
 void ImageDataLoader::loadPPMDataBinary(PPMImage& image, std::ifstream& file)

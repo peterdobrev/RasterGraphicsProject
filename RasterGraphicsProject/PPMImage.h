@@ -2,7 +2,7 @@
 #include "Image.h"
 #include "TransformableImage.h"
 #include "Vector.hpp"
-#include "Pixel.h"
+#include "ColorModifiablePixel.h"
 
 class PPMImage : public TransformableImage
 {
@@ -13,11 +13,12 @@ public:
 	void saveData() override;
 	void clearData() override;
 
-	const Vector<Pixel>& getData() const;
+	const Vector<ColorModifiablePixel>& getData() const;
+	uint8_t getMaxNumber() const;
 
 	PPMImage* clone() const override;
 	PPMImage(String name);
-	PPMImage(Vector<Pixel> data, String name, unsigned width, unsigned height);
+	PPMImage(Vector<ColorModifiablePixel> data, String name, unsigned width, unsigned height);
 
 protected:
 	void applyNegative() override;
@@ -26,6 +27,11 @@ protected:
 	void applyRotation() override;
 
 private:
-	Vector<Pixel> data;
+	uint8_t maxNumber = 0;
+	Vector<ColorModifiablePixel> data;
+
+	void rotate90Degrees();
+	void rotate180Degrees();
+	void rotate270Degrees();
 };
 
