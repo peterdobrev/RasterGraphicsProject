@@ -7,6 +7,17 @@ class PBMImage : public TransformableImage
 	friend class ImageDataLoader;
 
 public:
+	// Inherited via CollageVisitor
+	virtual PolymorphicPtr<TransformableImage> collageHorizontalWith(TransformableImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageHorizontalWithPBM(PBMImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageHorizontalWithPGM(PGMImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageHorizontalWithPPM(PPMImage* image, String collageName) override;
+
+	virtual PolymorphicPtr<TransformableImage> collageVerticalWith(TransformableImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPBM(PBMImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPGM(PGMImage* image, String collageName) override;
+	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPPM(PPMImage* image, String collageName) override;
+
 	PBMImage(String name);
 	PBMImage(BitSet data, String name, unsigned width, unsigned height);
 	TransformableImage* clone() const override;

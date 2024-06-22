@@ -90,9 +90,6 @@
     <ClCompile Include="UndoCommand.cpp">
       <Filter>Header Files\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FastColorModifiableObject.cpp">
-      <Filter>Header Files\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LoadableObject.cpp">
       <Filter>Header Files\Source Files</Filter>
     </ClCompile>
@@ -121,6 +118,15 @@
       <Filter>Header Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ColorModifiablePixel.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformableImage.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollageVisitor.cpp">
+      <Filter>Header Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorModifiableObject.cpp">
       <Filter>Header Files\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,9 +200,6 @@
     <ClInclude Include="MonochromeCommand.h">
       <Filter>Header Files\Source Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="FastColorModifiableObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TransformableImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -228,6 +231,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ColorModifiablePixel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollageVisitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

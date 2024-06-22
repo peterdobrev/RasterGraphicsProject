@@ -131,9 +131,10 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Bitset.cpp" />
     <ClCompile Include="CollageCommand.cpp" />
+    <ClCompile Include="CollageVisitor.cpp" />
+    <ClCompile Include="ColorModifiableObject.cpp" />
     <ClCompile Include="ColorModifiablePixel.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
-    <ClCompile Include="FastColorModifiableObject.cpp" />
     <ClCompile Include="GreyscaleCommand.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageDataLoader.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="SaveAsCommand.cpp" />
     <ClCompile Include="SaveCommand.cpp" />
+    <ClCompile Include="TransformableImage.cpp" />
     <ClCompile Include="TransformableImageFactory.cpp" />
     <ClCompile Include="MonochromeCommand.cpp" />
     <ClCompile Include="NegativeCommand.cpp" />
@@ -164,11 +166,11 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Bitset.h" />
     <ClInclude Include="CollageCommand.h" />
+    <ClInclude Include="CollageVisitor.h" />
     <ClInclude Include="ColorModifiableObject.h" />
     <ClInclude Include="ColorModifiablePixel.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
-    <ClInclude Include="FastColorModifiableObject.h" />
     <ClInclude Include="GreyscaleCommand.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageDataLoader.h" />

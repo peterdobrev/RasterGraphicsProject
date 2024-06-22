@@ -1,8 +1,8 @@
 #pragma once
-#include "FastColorModifiableObject.h"
+#include "ColorModifiableObject.h"
 #include "RotatableObject.h"
 
-class TransformableObject : public FastColorModifiableObject, public RotatableObject
+class TransformableObject : public ColorModifiableObject, public RotatableObject
 {
 public:
 	virtual void confirmChanges();

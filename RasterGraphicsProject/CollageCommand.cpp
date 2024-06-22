@@ -18,10 +18,13 @@ void CollageCommand::execute() const
 		}
 	}
 
-	if (!image1.get() || !image2.get())
-	{
-		throw "Cannot make collage from selected images! Images are not loaded!";
-	}
+	image1->loadData();
+	image2->loadData();
+
+
+	PolymorphicPtr<TransformableImage> collage = createCollagedImage(image1, image2);
+	collage.get()->saveData();
+	sessionPtr->addImage(std::move(collage));
 }
 
 void CollageCommand::printFeedback() const
@@ -46,7 +49,7 @@ Command* CollageCommand::clone() const
 }
 
 PolymorphicPtr<TransformableImage> CollageCommand::createCollagedImage(
-	PolymorphicPtr<TransformableImage> image1, PolymorphicPtr<TransformableImage> image2)
+	PolymorphicPtr<TransformableImage> image1, PolymorphicPtr<TransformableImage> image2) const
 {
 	image1.get()->save();
 	image2.get()->save();
@@ -55,18 +58,10 @@ PolymorphicPtr<TransformableImage> CollageCommand::createCollagedImage(
 	{
 	default:
 	case CollageCommand::horizontal:
-		if (image1.get()->getHeight() != image2.get()->getHeight())
-		{
-			throw std::exception("Error! Can't make a collage!");
-		}
-		break;
+		return image1.get()->collageHorizontalWith(image2.get(), outImagePath);
 	case CollageCommand::vertical:
-		if (image1.get()->getWidth() != image2.get()->getWidth())
-		{
-			throw std::exception("Error! Can't make a collage!");
-		}
-		break;
+		return image1.get()->collageVerticalWith(image2.get(), outImagePath);
 	}
 
-	throw "not implemented";
+	return PolymorphicPtr<TransformableImage>();
 }

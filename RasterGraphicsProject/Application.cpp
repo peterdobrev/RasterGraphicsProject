@@ -151,7 +151,7 @@ void Application::undo()
 {
     size_t lastTransformationIndex = sessions[activeSession]->getTransformationsCount() - 1;
     sessions[activeSession]->getTransformationAtIndex(lastTransformationIndex)->undo();
-    sessions[activeSession]->popBackTransformation();
+    std::cout << "Undo last command!";
 }
 
 void Application::help() const

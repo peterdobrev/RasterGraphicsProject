@@ -58,12 +58,10 @@ void PPMImage::applyRotation() {
 
 void PPMImage::rotate90Degrees()
 {
-	Vector<ColorModifiablePixel> newData(width * height);
+	Vector<ColorModifiablePixel> newData = data;
 	for (unsigned y = 0; y < height; ++y) {
 		for (unsigned x = 0; x < width; ++x) {
-			unsigned newDataInd = (width - 1 - x) * height + y;
-			unsigned dataInd = y * width + x;
-			newData[newDataInd] = data[dataInd];
+			newData[(width - 1 - x) * height + y] = data[y * width + x];
 		}
 	}
 	std::swap(width, height);
@@ -72,7 +70,7 @@ void PPMImage::rotate90Degrees()
 
 void PPMImage::rotate270Degrees()
 {
-	Vector<ColorModifiablePixel> newData(width * height);
+	Vector<ColorModifiablePixel> newData = data;
 	for (unsigned y = 0; y < height; ++y) {
 		for (unsigned x = 0; x < width; ++x) {
 			newData[x * height + (height - 1 - y)] = data[y * width + x];
@@ -82,10 +80,96 @@ void PPMImage::rotate270Degrees()
 	data = newData;
 }
 
+PolymorphicPtr<TransformableImage> PPMImage::collageHorizontalWith(TransformableImage* image, String collageName)
+{
+	return image->collageHorizontalWithPPM(this, collageName);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageHorizontalWithPBM(PBMImage* image, String collageName)
+{
+	const char* errorMessage = "Collage error! Can't make collage from different image types (.ppm, .pbm)!";
+	throw std::exception(errorMessage);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageHorizontalWithPGM(PGMImage* image, String collageName)
+{
+	const char* errorMessage = "Collage error! Can't make collage from different image types (.ppm, .pgm)!";
+	throw std::exception(errorMessage);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageHorizontalWithPPM(PPMImage* image, String collageName)
+{
+	if (this->getHeight() != image->getHeight())
+	{
+		const char* errorMessage = "Collage error! Image heights don't match!";
+		throw std::exception(errorMessage);
+	}
+
+	uint8_t collageMaxNumber = std::max(maxNumber, image->maxNumber);
+
+	Vector<ColorModifiablePixel> collageData(height * (width + image->width));
+	for (size_t row = 0; row < height; ++row)
+	{
+		for (size_t col = 0; col < width; ++col)
+		{
+			collageData.pushBack(data[row * width + col]);
+		}
+		for (size_t col = 0; col < image->width; ++col)
+		{
+			collageData.pushBack(image->data[row * image->width + col]);
+		}
+	}
+
+	return PolymorphicPtr<TransformableImage>
+		(new PPMImage(collageData, collageName, width + image->width, height, collageMaxNumber));
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageVerticalWith(TransformableImage* image, String collageName)
+{
+	return image->collageVerticalWithPPM(this, collageName);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageVerticalWithPBM(PBMImage* image, String collageName)
+{
+	const char* errorMessage = "Collage error! Can't make collage from different image types (.ppm, .pbm)!";
+	throw std::exception(errorMessage);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageVerticalWithPGM(PGMImage* image, String collageName)
+{
+	const char* errorMessage = "Collage error! Can't make collage from different image types (.ppm, .pgm)!";
+	throw std::exception(errorMessage);
+}
+
+PolymorphicPtr<TransformableImage> PPMImage::collageVerticalWithPPM(PPMImage* image, String collageName)
+{
+	if (this->getWidth() != image->getWidth())
+	{
+		const char* errorMessage = "Collage error! Image heights don't match!";
+		throw std::exception(errorMessage);
+	}
+
+	uint8_t collageMaxNumber = std::max(maxNumber, image->maxNumber);
+
+	Vector<ColorModifiablePixel> collageData((height + image->height) * width);
+	for (size_t i = 0; i < height * width; i++)
+	{
+		collageData.pushBack(data[i]);
+	}
+
+	for (size_t i = 0; i < image->height * width; i++)
+	{
+		collageData.pushBack(image->data[i]);
+	}
+
+	return PolymorphicPtr<TransformableImage>
+		(new PPMImage(std::move(collageData), collageName, width, height + image->height, collageMaxNumber));
+}
+
 
 void PPMImage::rotate180Degrees()
 {
-	Vector<ColorModifiablePixel> newData(width * height);
+	Vector<ColorModifiablePixel> newData = data;
 	for (unsigned y = 0; y < height; ++y) {
 		for (unsigned x = 0; x < width; ++x) {
 			newData[(height - 1 - y) * width + (width - 1 - x)] = data[y * width + x];
@@ -133,5 +217,6 @@ PPMImage* PPMImage::clone() const
 PPMImage::PPMImage(String name)
 	: TransformableImage(name) {}
 
-PPMImage::PPMImage(Vector<ColorModifiablePixel> data, String name, unsigned width, unsigned height)
-	: TransformableImage(name, width, height), data(data) {}
+PPMImage::PPMImage(Vector<ColorModifiablePixel> data, String name, unsigned width, unsigned height, uint8_t maxNumber)
+	: TransformableImage(name, width, height), data(data), maxNumber(maxNumber) {
+}

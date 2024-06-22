@@ -3,8 +3,7 @@
 
 void ImageDataLoader::loadPBMData(PBMImage& image)
 {
-	std::ifstream file;
-	file.open(image.getName().c_str());
+	std::ifstream file(image.getName().c_str(), std::ios::in);
 
 	if (!file.is_open())
 	{
@@ -28,8 +27,7 @@ void ImageDataLoader::loadPBMData(PBMImage& image)
 
 void ImageDataLoader::loadPGMData(PGMImage& image)
 {
-	std::ifstream file;
-	file.open(image.getName().c_str());
+	std::ifstream file(image.getName().c_str(), std::ios::in);
 
 	if (!file.is_open())
 	{
@@ -52,8 +50,7 @@ void ImageDataLoader::loadPGMData(PGMImage& image)
 
 void ImageDataLoader::loadPPMData(PPMImage& image)
 {
-	std::ifstream file;
-	file.open(image.getName().c_str());
+	std::ifstream file(image.getName().c_str(), std::ios::in);
 
 	if (!file.is_open())
 	{
@@ -78,7 +75,7 @@ void ImageDataLoader::loadPPMData(PPMImage& image)
 void ImageDataLoader::loadPBMDataASCII(PBMImage& image, std::ifstream& file)
 {
 	unsigned width, height;
-	file >> height >> width;
+	file >> width >> height;
 
 	BitSet data(width * height);
 	for (unsigned i = 0; i < width * height; i++)
@@ -104,7 +101,7 @@ void ImageDataLoader::loadPBMDataBinary(PBMImage& image, std::ifstream& file)
 void ImageDataLoader::loadPGMDataASCII(PGMImage& image, std::ifstream& file)
 {
 	unsigned width, height, maxNumber;
-	file >> height >> width >> maxNumber;
+	file >> width >> height >> maxNumber;
 
 	Vector<uint8_t> data(width * height);
 	for (unsigned i = 0; i < width * height; i++)
@@ -115,8 +112,7 @@ void ImageDataLoader::loadPGMDataASCII(PGMImage& image, std::ifstream& file)
 		{
 			throw std::invalid_argument("Value is bigger than allowed!");
 		}
-
-		data[i] = value;
+		data.pushBack(value);
 	}
 
 	image.data = data;
@@ -133,7 +129,7 @@ void ImageDataLoader::loadPGMDataBinary(PGMImage& image, std::ifstream& file)
 void ImageDataLoader::loadPPMDataASCII(PPMImage& image, std::ifstream& file)
 {
 	unsigned width, height, maxNumber;
-	file >> height >> width >> maxNumber;
+	file >> width >> height >> maxNumber;
 
 	Vector<ColorModifiablePixel> data(width * height);
 	for (unsigned i = 0; i < width * height; i++)

@@ -27,6 +27,6 @@ private:
 	Direction direction;
 
 	PolymorphicPtr<TransformableImage> createCollagedImage(
-		PolymorphicPtr<TransformableImage> image1, PolymorphicPtr<TransformableImage> image2);
+		PolymorphicPtr<TransformableImage> image1, PolymorphicPtr<TransformableImage> image2) const;
 };
 

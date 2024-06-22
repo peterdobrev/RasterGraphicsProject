@@ -19,7 +19,17 @@ namespace ImageDataSaverHelper{
 	}
 
 	template <typename T>
-	void writeData(std::ofstream& file, const T& data, unsigned width, size_t length) {
+	void writeDataIntCast(std::ofstream& file, const T& data, unsigned width, size_t length) {
+		for (unsigned i = 0; i < length; i++) {
+			file << static_cast<int>(data[i]) << " ";
+			if (i % width == width - 1) {
+				file << std::endl;
+			}
+		}
+	}
+
+	template <typename T>
+	void writeDataNoCast(std::ofstream& file, const T& data, unsigned width, size_t length) {
 		for (unsigned i = 0; i < length; i++) {
 			file << data[i] << " ";
 			if (i % width == width - 1) {
@@ -34,7 +44,7 @@ void ImageDataSaver::savePBMData(const PBMImage& image)
 	std::ofstream file;
 	ImageDataSaverHelper::openFile(file, image.getName());
 	ImageDataSaverHelper::writeHeader(file, "P1", image.getWidth(), image.getHeight());
-	ImageDataSaverHelper::writeData(file, image.getData(), image.getWidth(), image.getData().getN());
+	ImageDataSaverHelper::writeDataIntCast(file, image.getData(), image.getWidth(), image.getData().getN());
 }
 
 void ImageDataSaver::savePGMData(const PGMImage& image)
@@ -42,7 +52,7 @@ void ImageDataSaver::savePGMData(const PGMImage& image)
 	std::ofstream file;
 	ImageDataSaverHelper::openFile(file, image.getName());
 	ImageDataSaverHelper::writeHeader(file, "P2", image.getWidth(), image.getHeight(), static_cast<int>(image.getMaxNumber()));
-	ImageDataSaverHelper::writeData(file, image.getData(), image.getWidth(), image.getData().getSize());
+	ImageDataSaverHelper::writeDataIntCast(file, image.getData(), image.getWidth(), image.getData().getSize());
 }
 
 void ImageDataSaver::savePPMData(const PPMImage& image)
@@ -50,6 +60,6 @@ void ImageDataSaver::savePPMData(const PPMImage& image)
 	std::ofstream file;
 	ImageDataSaverHelper::openFile(file, image.getName());
 	ImageDataSaverHelper::writeHeader(file, "P3", image.getWidth(), image.getHeight(), static_cast<int>(image.getMaxNumber()));
-	ImageDataSaverHelper::writeData(file, image.getData(), image.getWidth(), image.getData().getSize());
+	ImageDataSaverHelper::writeDataNoCast(file, image.getData(), image.getWidth(), image.getData().getSize());
 }
 

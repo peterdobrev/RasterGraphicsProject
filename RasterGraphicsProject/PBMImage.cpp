@@ -4,12 +4,11 @@
 
 void PBMImage::applyNegative()
 {
-	if (isNegative)
+	if (!isNegative) return;
+
+	for (unsigned i = 0; i < width * height; i++)
 	{
-		for (unsigned i = 0; i < width * height; i++)
-		{
-			data.getBit(i) ? data.turnOffBit(i) : data.turnOnBit(i);
-		}
+		data.getBit(i) ? data.turnOffBit(i) : data.turnOnBit(i);
 	}
 }
 
@@ -118,3 +117,110 @@ void PBMImage::clearData()
 PBMImage::PBMImage(String name)
 	: TransformableImage(name) {}
 
+PolymorphicPtr<TransformableImage> PBMImage::collageHorizontalWith(TransformableImage* image, String collageName)
+{
+	return image->collageHorizontalWithPBM(this, collageName);
+}
+
+PolymorphicPtr<TransformableImage> PBMImage::collageHorizontalWithPBM(PBMImage* image, String collageName)
+{
+	if (this->getHeight() != image->getHeight())
+	{
+		throw std::runtime_error("Collage error! Image heights don't match!");
+	}
+
+	unsigned collageWidth = width + image->width;
+
+	BitSet collageData(height * collageWidth);
+
+	for (size_t row = 0; row < height; ++row)
+	{
+		for (size_t col = 0; col < width; ++col)
+		{
+			if (data.getBit(row * width + col))
+			{
+				collageData.turnOnBit(row * collageWidth + col);
+			}
+		}
+		for (size_t col = 0; col < image->width; ++col)
+		{
+			if (image->data.getBit(row * image->width + col))
+			{
+				collageData.turnOnBit(row * collageWidth + (width + col));
+			}
+		}
+	}
+
+	return PolymorphicPtr<TransformableImage>(
+		new PBMImage(collageData, collageName, collageWidth, height)
+		);
+}
+
+
+PolymorphicPtr<TransformableImage> PBMImage::collageHorizontalWithPGM(PGMImage* image, String collageName)
+{
+	const char* message = "Error!Images are different types!";
+	throw std::runtime_error(message);
+}
+
+PolymorphicPtr<TransformableImage> PBMImage::collageHorizontalWithPPM(PPMImage* image, String collageName)
+{
+	const char* message = "Error!Images are different types!";
+	throw std::runtime_error(message);
+}
+
+PolymorphicPtr<TransformableImage> PBMImage::collageVerticalWith(TransformableImage* image, String collageName)
+{
+	return image->collageVerticalWithPBM(this, collageName);
+}
+
+PolymorphicPtr<TransformableImage> PBMImage::collageVerticalWithPBM(PBMImage* image, String collageName)
+{
+	if (this->getWidth() != image->getWidth())
+	{
+		throw std::runtime_error("Collage error! Image widths don't match!");
+	}
+
+	unsigned collageHeight = height + image->height;
+
+	BitSet collageData(collageHeight * width);
+
+	for (size_t row = 0; row < height; ++row)
+	{
+		for (size_t col = 0; col < width; ++col)
+		{
+			if (data.getBit(row * width + col))
+			{
+				collageData.turnOnBit(row * width + col);
+			}
+		}
+	}
+
+	for (size_t row = 0; row < image->height; ++row)
+	{
+		for (size_t col = 0; col < width; ++col)
+		{
+			if (image->data.getBit(row * width + col))
+			{
+				collageData.turnOnBit((row + height) * width + col);
+			}
+		}
+	}
+
+	return PolymorphicPtr<TransformableImage>(
+		new PBMImage(collageData, collageName, width, collageHeight)
+		);
+}
+
+
+PolymorphicPtr<TransformableImage> PBMImage::collageVerticalWithPGM(PGMImage* image, String collageName)
+{
+	const char* message = "Error!Images are different types!";
+	throw std::runtime_error(message);
+}
+
+PolymorphicPtr<TransformableImage> PBMImage::collageVerticalWithPPM(PPMImage* image, String collageName)
+{
+	const char* message = "Error!Images are different types!";
+	throw std::runtime_error(message);
+}
