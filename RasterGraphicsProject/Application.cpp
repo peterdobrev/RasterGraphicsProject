@@ -29,14 +29,14 @@ void Application::run()
     {
         std::cout << "> ";
 
-        //try {
+        try {
             readCommand();
-        //}
+        }
 
         //catch (std::exception e)
         //{
             //std::cout << e.what();
-        //}
+        }
 
         std::cout << std::endl;
     }
