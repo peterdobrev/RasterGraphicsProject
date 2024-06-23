@@ -20,5 +20,7 @@ public:
 	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPBM(PBMImage* image, String collageName) = 0;
 	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPGM(PGMImage* image, String collageName) = 0;
 	virtual PolymorphicPtr<TransformableImage> collageVerticalWithPPM(PPMImage* image, String collageName) = 0;
+
+	virtual ~CollageVisitor() = default;
 };
 
